@@ -3,10 +3,10 @@
     <el-header>
       <el-row type="flex" justify="space-between" align="middle">
         <el-col :span="3">
-          <a href="http://www.zzswork.top/" style="text-decoration: none;color: #007bff !important">zomo</a>
+          <a href="http://www.zzswork.top/" style="text-decoration: none;color: #007bff !important; font-size: 26px;">zomo</a>
         </el-col>
         <el-col :span="21">
-          <el-button style="float: right;" type="text" v-if="!userInfo.show_btn">登录</el-button>
+          <!-- <el-button style="float: right;" type="text" v-if="!userInfo.show_btn">登录</el-button> -->
         </el-col>
       </el-row>
     </el-header>
@@ -55,8 +55,10 @@ export default {
       if (this.copyContent === '') {
         this.$message.error('请输入抖音分享内容！')
       } else {
+        // eslint-disable-next-line
+        const text = this.copyContent.replace(/[^\x00-\x7F]/g, '')
         const params = {
-          video_url: this.copyContent
+          video_url: text
         }
         this.loading = true
         this.$http.post('/api/simple/sdomo/removewatermark/', params).then(res => {
