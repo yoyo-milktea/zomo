@@ -21,8 +21,8 @@
         <el-col :span="14">
           <el-input placeholder="直接粘贴分享的内容，多个请用;隔开" v-model="copyContent">
             <el-button slot="append" icon="el-icon-download" class="analysis-btn" @click="analysisDownload" :loading="loading">解析</el-button>
+            <el-button class="btn-paste" slot="suffix" icon="el-icon-copy-document" @click="getClipboardContent">粘贴</el-button>
           </el-input>
-          <el-button class="btn-paste" icon="el-icon-copy-document" @click="getClipboardContent">粘贴</el-button>
           <hr>
         </el-col>
       </el-row>
@@ -173,19 +173,16 @@ export default {
         border-top: 1px solid rgba(0,0,0,.1);
       }
       .el-col {
-        position: relative;
         .btn-paste {
           display: flex;
           justify-content: center;
           background: #e9eef7;
-          position: absolute;
+          margin-top: 7px;
           padding: 8px 10px 8px 12px;
           border: none;
           border-radius: 8px;
           font-size: 14px;
           line-height: 20px;
-          right: 260px;
-          top: 7px;
           color: #007bff;
           .el-icon-copy-document {
             margin-top: 3px;
